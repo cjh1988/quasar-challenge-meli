@@ -1,6 +1,6 @@
 package com.meli.challenge.service.impl;
 
-import com.meli.challenge.model.Point;
+import com.meli.challenge.dto.PointDTO;
 import com.meli.challenge.repository.SatelliteRepository;
 import com.meli.challenge.service.LocationService;
 import com.meli.challenge.utils.DoubleUtil;
@@ -19,13 +19,13 @@ public class LocationServiceImpl implements LocationService {
     private final SatelliteRepository satelliteRepository;
 
     @Override
-    public Point getLocation(List<Double> distances) {
+    public PointDTO getLocation(List<Double> distances) {
         log.info("::: Starting the getLocationProcess :::");
         double[] distancesArray = distances.stream().mapToDouble(Double::doubleValue).toArray();
 
         double[] positionArray = QuasarUtil.trilateration(getPositions(), distancesArray);
         log.info("::: Finishing the getLocationProcess :::");
-        return Point.builder()
+        return PointDTO.builder()
                 .x(DoubleUtil.formatTwoDecimals(positionArray[0]))
                 .y(DoubleUtil.formatTwoDecimals(positionArray[1]))
                 .build();

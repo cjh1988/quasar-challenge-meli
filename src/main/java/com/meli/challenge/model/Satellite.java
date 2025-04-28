@@ -1,4 +1,4 @@
-package com.meli.challenge.dto;
+package com.meli.challenge.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SatelliteDTO {
+public class Satellite {
 
     private String name;
     private double distance;

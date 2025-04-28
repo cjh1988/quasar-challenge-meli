@@ -1,10 +1,10 @@
 package com.meli.challenge.service.impl;
 
-import com.meli.challenge.dto.SatelliteDTO;
+import com.meli.challenge.model.Satellite;
 import com.meli.challenge.dto.request.TopSecretRequestDTO;
 import com.meli.challenge.dto.response.TopSecretResponseDTO;
 import com.meli.challenge.exception.FieldValidatorException;
-import com.meli.challenge.model.Point;
+import com.meli.challenge.dto.PointDTO;
 import com.meli.challenge.service.CommunicationService;
 import com.meli.challenge.service.LocationService;
 import com.meli.challenge.service.MessageService;
@@ -35,15 +35,15 @@ public class CommunicationServiceImpl implements CommunicationService {
         validatorService.topSecretRequestValidation(request);
 
         var distances = request.getSatellites().stream()
-                .map(SatelliteDTO::getDistance)
+                .map(Satellite::getDistance)
                 .toList();
 
         var messages = request.getSatellites().stream()
-                .map(SatelliteDTO::getMessage)
+                .map(Satellite::getMessage)
                 .toList();
 
         //calculate location
-        var point = new Point();
+        var point = new PointDTO();
         try {
             point = locationService.getLocation(distances);
         } catch (Exception exception) {
@@ -74,7 +74,7 @@ public class CommunicationServiceImpl implements CommunicationService {
 
         var params = validatorService.requestMessageSplit(name);
 
-        var satellites = new ArrayList<SatelliteDTO>();
+        var satellites = new ArrayList<Satellite>();
         if (params.getSatelliteHashMap().size() == params.getSatellitesNames().size()) {
             for (String satelliteName : params.getSatellitesNames()) {
                 satellites.add(params.getSatelliteHashMap().get(satelliteName));

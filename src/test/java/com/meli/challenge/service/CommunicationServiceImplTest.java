@@ -1,10 +1,10 @@
 package com.meli.challenge.service;
 
 import com.meli.challenge.dto.ParamsDTO;
-import com.meli.challenge.dto.SatelliteDTO;
+import com.meli.challenge.model.Satellite;
 import com.meli.challenge.dto.request.TopSecretRequestDTO;
 import com.meli.challenge.exception.FieldValidatorException;
-import com.meli.challenge.model.Point;
+import com.meli.challenge.dto.PointDTO;
 import com.meli.challenge.service.impl.CommunicationServiceImpl;
 import com.meli.challenge.service.impl.LocationServiceImpl;
 import com.meli.challenge.service.impl.ValidatorServiceImpl;
@@ -51,22 +51,22 @@ class CommunicationServiceImplTest {
     void testProcessMessage() {
 
         var request = TopSecretRequestDTO.builder()
-                .satellites(List.of(SatelliteDTO.builder()
+                .satellites(List.of(Satellite.builder()
                         .name("kenobi")
                         .distance(100.0)
                         .message(List.of("este", "", "un", "mensaje"))
-                        .build(), SatelliteDTO.builder()
+                        .build(), Satellite.builder()
                         .name("skywalker")
                         .distance(115.5)
                         .message(List.of("", "es", "", ""))
-                        .build(), SatelliteDTO.builder()
+                        .build(), Satellite.builder()
                         .name("sato")
                         .distance(142.7)
                         .message(List.of("este", "", "", "mensaje"))
                         .build()))
                 .build();
 
-        var expectedPosition = new Point(-58.32, -69.55);
+        var expectedPosition = new PointDTO(-58.32, -69.55);
         var expectedMessage = "este es un mensaje";
 
         when(locationService.getLocation(anyList())).thenReturn(expectedPosition);
@@ -84,15 +84,15 @@ class CommunicationServiceImplTest {
     @Test
     void testProcessMessage_ErrorLocation() {
         var request = TopSecretRequestDTO.builder()
-                .satellites(List.of(SatelliteDTO.builder()
+                .satellites(List.of(Satellite.builder()
                         .name("kenobi")
                         .distance(100.0)
                         .message(List.of("este", "", "un", "mensaje"))
-                        .build(), SatelliteDTO.builder()
+                        .build(), Satellite.builder()
                         .name("skywalker")
                         .distance(115.5)
                         .message(List.of("", "es", "", ""))
-                        .build(), SatelliteDTO.builder()
+                        .build(), Satellite.builder()
                         .name("sato")
                         .distance(142.7)
                         .message(List.of("este", "", "", "mensaje"))
@@ -109,15 +109,15 @@ class CommunicationServiceImplTest {
     @Test
     void testProcessMessage_ErrorMessage() {
         var request = TopSecretRequestDTO.builder()
-                .satellites(List.of(SatelliteDTO.builder()
+                .satellites(List.of(Satellite.builder()
                         .name("kenobi")
                         .distance(100.0)
                         .message(List.of("este", "", "un", "mensaje"))
-                        .build(), SatelliteDTO.builder()
+                        .build(), Satellite.builder()
                         .name("skywalker")
                         .distance(115.5)
                         .message(List.of("", "es", "", ""))
-                        .build(), SatelliteDTO.builder()
+                        .build(), Satellite.builder()
                         .name("sato")
                         .distance(142.7)
                         .message(List.of("este", "", "", "mensaje"))
@@ -134,19 +134,19 @@ class CommunicationServiceImplTest {
     @Test
     void testProcessMessageSplit() {
 
-        var satelliteMap = new HashMap<String, SatelliteDTO>();
+        var satelliteMap = new HashMap<String, Satellite>();
 
-        satelliteMap.put("kenobi", SatelliteDTO.builder()
+        satelliteMap.put("kenobi", Satellite.builder()
                 .name("kenobi")
                 .distance(100.0)
                 .message(List.of("este", "", "un", "mensaje"))
                 .build());
-        satelliteMap.put("skywalker", SatelliteDTO.builder()
+        satelliteMap.put("skywalker", Satellite.builder()
                 .name("skywalker")
                 .distance(115.5)
                 .message(List.of("", "es", "", ""))
                 .build());
-        satelliteMap.put("sato", SatelliteDTO.builder()
+        satelliteMap.put("sato", Satellite.builder()
                 .name("sato")
                 .distance(142.7)
                 .message(List.of("este", "", "", "mensaje"))
@@ -161,7 +161,7 @@ class CommunicationServiceImplTest {
 
         when(validatorService.requestMessageSplit(any())).thenReturn(params);
 
-        var expectedPosition = new Point(-58.32, -69.55);
+        var expectedPosition = new PointDTO(-58.32, -69.55);
         var expectedMessage = "este es un mensaje";
 
         when(locationService.getLocation(anyList())).thenReturn(expectedPosition);

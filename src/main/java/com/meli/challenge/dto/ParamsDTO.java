@@ -1,5 +1,6 @@
 package com.meli.challenge.dto;
 
+import com.meli.challenge.model.Satellite;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class ParamsDTO {
 
-    private HashMap<String,SatelliteDTO> satelliteHashMap;
+    private HashMap<String, Satellite> satelliteHashMap;
     private List<String> satellitesNames;
 }

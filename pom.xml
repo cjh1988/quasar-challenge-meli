@@ -73,6 +73,58 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco-maven-plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.doxia</groupId>
+						<artifactId>doxia-core</artifactId>
+						<version>${doxia-core.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<excludes>
+						<exclude>**/config/**</exclude>
+						<exclude>**/errorhandler/**</exclude>
+						<exclude>**/consumer/**</exclude>
+						<exclude>**/dto/**</exclude>
+						<exclude>**/utils/**</exclude>
+						<exclude>**/repository/**</exclude>
+						<exclude>**/exception/**</exclude>
+						<exclude>**/model/**</exclude>
+						<exclude>**/*Application.class</exclude>
+					</excludes>
+					<rules>
+						<rule>
+							<element>PACKAGE</element>
+							<limits>
+								<limit>
+									<counter>INSTRUCTION</counter>
+									<value>COVEREDRATIO</value>
+									<minimum>90%</minimum>
+								</limit>
+							</limits>
+						</rule>
+					</rules>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

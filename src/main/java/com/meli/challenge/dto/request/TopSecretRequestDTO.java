@@ -1,6 +1,6 @@
 package com.meli.challenge.dto.request;
 
-import com.meli.challenge.dto.SatelliteDTO;
+import com.meli.challenge.model.Satellite;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,5 +14,5 @@ import java.util.List;
 @NoArgsConstructor
 public class TopSecretRequestDTO {
 
-    List<SatelliteDTO> satellites;
+    List<Satellite> satellites;
 }

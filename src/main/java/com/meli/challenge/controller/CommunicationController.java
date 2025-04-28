@@ -1,7 +1,6 @@
 package com.meli.challenge.controller;
 
 import com.meli.challenge.dto.ErrorDTO;
-import com.meli.challenge.dto.SatelliteDTO;
 import com.meli.challenge.dto.request.TopSecretRequestDTO;
 import com.meli.challenge.dto.request.TopSecretSplitRequestDTO;
 import com.meli.challenge.dto.response.TopSecretResponseDTO;

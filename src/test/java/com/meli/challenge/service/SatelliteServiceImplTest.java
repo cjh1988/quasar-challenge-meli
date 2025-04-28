@@ -1,6 +1,6 @@
 package com.meli.challenge.service;
 
-import com.meli.challenge.dto.SatelliteDTO;
+import com.meli.challenge.model.Satellite;
 import com.meli.challenge.dto.request.TopSecretSplitRequestDTO;
 import com.meli.challenge.exception.FieldValidatorException;
 import com.meli.challenge.repository.SatelliteRepository;
@@ -45,7 +45,7 @@ class SatelliteServiceImplTest {
 
         satelliteService.updateSatellite(name, requestDTO);
 
-        verify(repository, times(1)).updateSatellite(any(SatelliteDTO.class));
+        verify(repository, times(1)).updateSatellite(any(Satellite.class));
     }
 
     @Test
@@ -60,15 +60,15 @@ class SatelliteServiceImplTest {
         });
 
         assertEquals("Satellite with name unknown does not exist", exception.getMessage());
-        verify(repository, never()).updateSatellite(any(SatelliteDTO.class));
+        verify(repository, never()).updateSatellite(any(Satellite.class));
     }
 
     @Test
     void testGetSatellitesMap() {
-        HashMap<String, SatelliteDTO> mockMap = new HashMap<>();
+        HashMap<String, Satellite> mockMap = new HashMap<>();
         when(repository.getSatellitesMap()).thenReturn(mockMap);
 
-        HashMap<String, SatelliteDTO> result = satelliteService.getSatellitesMap();
+        HashMap<String, Satellite> result = satelliteService.getSatellitesMap();
 
         assertEquals(mockMap, result);
         verify(repository, times(1)).getSatellitesMap();

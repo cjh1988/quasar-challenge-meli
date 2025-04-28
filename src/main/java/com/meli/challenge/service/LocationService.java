@@ -1,10 +1,10 @@
 package com.meli.challenge.service;
 
-import com.meli.challenge.model.Point;
+import com.meli.challenge.dto.PointDTO;
 
 import java.util.List;
 
 public interface LocationService {
 
-    Point getLocation(List<Double> distances);
+    PointDTO getLocation(List<Double> distances);
 }

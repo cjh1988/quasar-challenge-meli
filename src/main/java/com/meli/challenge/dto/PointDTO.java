@@ -1,4 +1,4 @@
-package com.meli.challenge.model;
+package com.meli.challenge.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Point {
+public class PointDTO {
 
     private Double x;
     private Double y;

@@ -1,7 +1,7 @@
 package com.meli.challenge.service.impl;
 
 import com.meli.challenge.dto.ParamsDTO;
-import com.meli.challenge.dto.SatelliteDTO;
+import com.meli.challenge.model.Satellite;
 import com.meli.challenge.dto.request.TopSecretRequestDTO;
 import com.meli.challenge.exception.FieldValidatorException;
 import com.meli.challenge.service.SatelliteService;
@@ -35,7 +35,7 @@ public class ValidatorServiceImpl implements ValidatorService {
         }
 
         var receivedNames = requestDTO.getSatellites().stream()
-                .map(SatelliteDTO::getName)
+                .map(Satellite::getName)
                 .toList();
 
         // Check if the names of the satellites are valid
@@ -60,7 +60,7 @@ public class ValidatorServiceImpl implements ValidatorService {
             throw new FieldValidatorException("The size of the message must be equal for all satellites", HttpStatus.BAD_REQUEST);
         }
         var messages = requestDTO.getSatellites().stream()
-                .map(SatelliteDTO::getMessage)
+                .map(Satellite::getMessage)
                 .toList();
 
         if (Boolean.FALSE.equals(areMessagesValid(messages))) {

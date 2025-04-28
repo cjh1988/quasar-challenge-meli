@@ -1,6 +1,6 @@
 package com.meli.challenge.service;
 
-import com.meli.challenge.dto.SatelliteDTO;
+import com.meli.challenge.model.Satellite;
 import com.meli.challenge.dto.request.TopSecretRequestDTO;
 import com.meli.challenge.exception.FieldValidatorException;
 import com.meli.challenge.service.impl.ValidatorServiceImpl;
@@ -36,17 +36,17 @@ class ValidatorServiceImplTest {
     void testTopSecretRequestValidation_ValidRequest() {
         var requestDTO = TopSecretRequestDTO
                 .builder()
-                .satellites(List.of(SatelliteDTO.builder()
+                .satellites(List.of(Satellite.builder()
                                         .name("kenobi")
                                         .distance(100.0)
                                         .message(List.of("este", "", "un", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("skywalker")
                                 .distance(200.0)
                                 .message(List.of("", "es", "", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("sato")
                                 .distance(300.0)
                                 .message(List.of("este", "es", "un", ""))
@@ -62,12 +62,12 @@ class ValidatorServiceImplTest {
     void testTopSecretRequestValidation_notEnoughSatellites() {
         var requestDTO = TopSecretRequestDTO
                 .builder()
-                .satellites(List.of(SatelliteDTO.builder()
+                .satellites(List.of(Satellite.builder()
                                         .name("kenobi")
                                         .distance(100.0)
                                         .message(List.of("este", "", "un", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("skywalker")
                                 .distance(200.0)
                                 .message(List.of("", "es", "", "mensaje"))
@@ -84,17 +84,17 @@ class ValidatorServiceImplTest {
     void testTopSecretRequestValidation_satelliteNameNull() {
         var requestDTO = TopSecretRequestDTO
                 .builder()
-                .satellites(List.of(SatelliteDTO.builder()
+                .satellites(List.of(Satellite.builder()
                                         .name(null)
                                         .distance(100.0)
                                         .message(List.of("este", "", "un", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("skywalker")
                                 .distance(200.0)
                                 .message(List.of("", "es", "", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("sato")
                                 .distance(300.0)
                                 .message(List.of("este", "es", "un", ""))
@@ -111,17 +111,17 @@ class ValidatorServiceImplTest {
     void testTopSecretRequestValidation_SatelliteNotValid() {
         var requestDTO = TopSecretRequestDTO
                 .builder()
-                .satellites(List.of(SatelliteDTO.builder()
+                .satellites(List.of(Satellite.builder()
                                         .name("kenobi")
                                         .distance(100.0)
                                         .message(List.of("este", "", "un", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("r2-d2")
                                 .distance(200.0)
                                 .message(List.of("", "es", "", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("sato")
                                 .distance(300.0)
                                 .message(List.of("este", "es", "un", ""))
@@ -139,17 +139,17 @@ class ValidatorServiceImplTest {
     void testTopSecretRequestValidation_SatelliteDistanceZero() {
         var requestDTO = TopSecretRequestDTO
                 .builder()
-                .satellites(List.of(SatelliteDTO.builder()
+                .satellites(List.of(Satellite.builder()
                                         .name("kenobi")
                                         .distance(0.0)
                                         .message(List.of("este", "", "un", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("skywalker")
                                 .distance(200.0)
                                 .message(List.of("", "es", "", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("sato")
                                 .distance(300.0)
                                 .message(List.of("este", "es", "un", ""))
@@ -167,17 +167,17 @@ class ValidatorServiceImplTest {
     void testTopSecretRequestValidation_SatelliteMessageNull() {
         var requestDTO = TopSecretRequestDTO
                 .builder()
-                .satellites(List.of(SatelliteDTO.builder()
+                .satellites(List.of(Satellite.builder()
                                         .name("kenobi")
                                         .distance(100.0)
                                         .message(null)
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("skywalker")
                                 .distance(200.0)
                                 .message(List.of("", "es", "", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("sato")
                                 .distance(300.0)
                                 .message(List.of("este", "es", "un", ""))
@@ -195,17 +195,17 @@ class ValidatorServiceImplTest {
     void testTopSecretRequestValidation_SatelliteMessageSizeZero() {
         var requestDTO = TopSecretRequestDTO
                 .builder()
-                .satellites(List.of(SatelliteDTO.builder()
+                .satellites(List.of(Satellite.builder()
                                         .name("kenobi")
                                         .distance(100.0)
                                         .message(List.of(""))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("skywalker")
                                 .distance(200.0)
                                 .message(List.of("", "es", "", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("sato")
                                 .distance(300.0)
                                 .message(List.of("este", "es", "un", ""))
@@ -224,17 +224,17 @@ class ValidatorServiceImplTest {
         var requestDTO = TopSecretRequestDTO
                 .builder()
                 .satellites(List.of(
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("kenobi")
                                 .distance(100.0)
                                 .message(List.of("este", "", "un", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("skywalker")
                                 .distance(200.0)
                                 .message(List.of("", "es", "", "mensaje"))
                                 .build(),
-                        SatelliteDTO.builder()
+                        Satellite.builder()
                                 .name("sato")
                                 .distance(300.0)
                                 .message(List.of("este", "es", "un", "diferente"))
@@ -251,8 +251,8 @@ class ValidatorServiceImplTest {
     @Test
     void testRequestMessageSplit_ValidSatellite() {
         var satelliteName = "kenobi";
-        HashMap<String, SatelliteDTO> satelliteMap = new HashMap<>();
-        satelliteMap.put("kenobi", SatelliteDTO.builder().name("kenobi").build());
+        HashMap<String, Satellite> satelliteMap = new HashMap<>();
+        satelliteMap.put("kenobi", Satellite.builder().name("kenobi").build());
         var satelliteNames = List.of("kenobi", "skywalker", "sato");
 
         when(satelliteService.isSatelliteExist(satelliteName)).thenReturn(true);

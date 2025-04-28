@@ -1,6 +1,6 @@
 package com.meli.challenge.service.impl;
 
-import com.meli.challenge.dto.SatelliteDTO;
+import com.meli.challenge.model.Satellite;
 import com.meli.challenge.dto.request.TopSecretSplitRequestDTO;
 import com.meli.challenge.exception.FieldValidatorException;
 import com.meli.challenge.repository.SatelliteRepository;
@@ -28,7 +28,7 @@ public class SatelliteServiceImpl implements SatelliteService {
             log.error("Satellite with name {} does not exist", name);
             throw new FieldValidatorException("Satellite with name " + name + " does not exist", HttpStatus.NOT_FOUND);
         }
-        repository.updateSatellite(SatelliteDTO.builder()
+        repository.updateSatellite(Satellite.builder()
                 .name(name)
                 .distance(requestDTO.getDistance())
                 .message(requestDTO.getMessage())
@@ -36,7 +36,7 @@ public class SatelliteServiceImpl implements SatelliteService {
     }
 
     @Override
-    public HashMap<String, SatelliteDTO> getSatellitesMap() {
+    public HashMap<String, Satellite> getSatellitesMap() {
         return repository.getSatellitesMap();
     }
 
@@ -56,7 +56,7 @@ public class SatelliteServiceImpl implements SatelliteService {
     }
 
     @Override
-    public void addSatellitesMap(List<SatelliteDTO> satelliteDTOList) {
+    public void addSatellitesMap(List<Satellite> satelliteDTOList) {
 
         repository.addSatellitesReferenceMap(satelliteDTOList);
     }

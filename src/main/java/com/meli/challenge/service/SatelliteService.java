@@ -1,6 +1,6 @@
 package com.meli.challenge.service;
 
-import com.meli.challenge.dto.SatelliteDTO;
+import com.meli.challenge.model.Satellite;
 import com.meli.challenge.dto.request.TopSecretSplitRequestDTO;
 
 import java.util.HashMap;
@@ -11,7 +11,7 @@ public interface SatelliteService {
 
     void updateSatellite(String nanme, TopSecretSplitRequestDTO requestDTO);
 
-    HashMap<String, SatelliteDTO> getSatellitesMap();
+    HashMap<String, Satellite> getSatellitesMap();
 
     Boolean isSatelliteExist(String name);
 
@@ -19,6 +19,6 @@ public interface SatelliteService {
 
     List<String> getSatelliteNames();
 
-    void addSatellitesMap(List<SatelliteDTO> satelliteReferenceList);
+    void addSatellitesMap(List<Satellite> satelliteReferenceList);
 
 }
