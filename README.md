@@ -8,6 +8,7 @@ Solución al Challenge Operación Fuego de Quásar de evaluación para desarroll
 * Java 21
 * Web Browser
 * Terminal
+* Git
 
 ## Estructura de proyecto
 
