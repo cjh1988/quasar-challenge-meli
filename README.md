@@ -22,6 +22,6 @@ Patron MVC(Model - View - Controller)
 
 1. clonar el repositorio mediante el comando: git clone https://github.com/cjh1988/quasar-challenge-meli.git
 2. Posicionarse en la carpeta del proyecto clonado y ejecutar el siguiente comando en la terminal: mvn clean compile install
-3. Dentro de la carpeta del proyecto, ejecutar el siguiente comando en la terminal: java -jar target/challenge-1.0.0.jar.
+3. Dentro de la carpeta del proyecto, ejecutar los siguientes comandos en la terminal: java -jar target/challenge-1.0.0.jar o mvn spring-boot:run.
 4. Aplicacion iniciada.
 5. Ingresar a http://localhost:8080/swagger-ui.html en el browser.
