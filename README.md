@@ -20,7 +20,7 @@ Patron MVC(Model - View - Controller)
 
 ## Instalación y ejecución
 
-1. clonar el repositorio <remote>
+1. clonar el repositorio mediante el comando: git clone https://github.com/cjh1988/quasar-challenge-meli.git
 2. Posicionarse en la carpeta del proyecto clonado y ejecutar el siguiente comando en la terminal: mvn clean compile install
 3. Dentro de la carpeta del proyecto, ejecutar el siguiente comando en la terminal: java -jar target/challenge-1.0.0.jar.
 4. Aplicacion iniciada.
